@@ -1,3 +1,6 @@
+# this is a version of probabilistic scheme without Binning, i.e. without dividing the domain into small grids and proceed 
+# local simulation-regression. Others are the same.
+
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import Ridge
@@ -26,7 +29,7 @@ for N in N_set:
 
   u = np.zeros_like(X)
   u[-1] = np.cos(X[-1] + A[-1])
-  print(u[-1].mean())
+  # print(u[-1].mean())
 
   for k in range(N-1, -1, -1):
       # print(f"Time step {k}")
@@ -82,7 +85,7 @@ for N in N_set:
       F_total = (min_mu + max_a_term + f_val) - 0.5 * sigma_ref**2 * gamma
 
       u[k] = E_u_next + h * F_total
-      print(f"Mean u[{k}]: {u[k].mean():.6f}")
+      # print(f"Mean u[{k}]: {u[k].mean():.6f}")
 
   print(f"Approximate solution at t=0: {u[0].mean():.6f}")
   print(f"Numerical error: {abs(u[0].mean() - 1):.6f}")
